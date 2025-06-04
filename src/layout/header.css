@@ -1,0 +1,38 @@
+.header {
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+  backdrop-filter: blur(4px);
+}
+
+.headerProperties {
+  /* background-color: var(--mantine-color-gray-5); */
+  background-color: white;
+}
+
+.header.scrolled {
+  background-color: white;
+}
+
+.infoHeader {
+  display: flex;
+  padding: 5px 25px;
+  margin: 0;
+  color: white;
+  list-style: none;
+  align-items: center;
+  font-size: 14px;
+  gap: 20px;
+  background-color: var(--mantine-primary-color-9);
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    display: none;
+  }
+}
+
+.logo {
+  width: 80px;
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    width: 60px;
+  }
+}

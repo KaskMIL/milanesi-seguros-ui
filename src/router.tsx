@@ -1,9 +1,20 @@
 import { createBrowserRouter } from 'react-router';
+import Root from './layout/Root';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    lazy: lazyComponent(import('./home/home-route')),
+    element: <Root />,
+    children: [
+      {
+        path: '',
+        lazy: lazyComponent(import('./index/page/Index')),
+      },
+      // {
+      //   path: 'propiedades',
+      //   lazy: lazyComponent(import('./properties/page/PropertiesPage')),
+      // }
+    ]
   },
 ]);
 

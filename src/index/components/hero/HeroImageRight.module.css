@@ -1,0 +1,73 @@
+.root {
+  background-color: #11284b;
+  background-size: cover;
+  background-position: center;
+  background-image:
+    linear-gradient(180deg, rgba(130, 201, 30, 0) 0%,  var(--mantine-color-gray-8) 99.9%),
+    url(/assets/compressed/family-comp.jpg);
+    padding-top: calc(var(--mantine-spacing-xl) * 3);
+    padding-bottom: calc(var(--mantine-spacing-xl) * 3);
+    height: calc(100vh);
+  }
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: mantine-breakpoint-md) {
+    flex-direction: column;
+  }
+}
+
+.image {
+  @media (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
+}
+
+.content {
+  padding-top: calc(var(--mantine-spacing-xl) * 2);
+  padding-bottom: calc(var(--mantine-spacing-xl) * 2);
+  margin-right: calc(var(--mantine-spacing-xl) * 3);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    margin-right: 0;
+  }
+}
+
+.title {
+  color: var(--mantine-color-white);
+  font-family: Outfit, var(--mantine-font-family);
+  font-weight: 600;
+  line-height: 1.05;
+  max-width: 500px;
+  font-size: 56px;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    max-width: 100%;
+    font-size: 34px;
+    line-height: 1.15;
+  }
+}
+
+.description {
+  color: var(--mantine-color-white);
+  font-size: large;
+  /* opacity: 0.75; */
+  max-width: 500px;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    max-width: 100%;
+  }
+}
+
+.control {
+  padding-left: 50px;
+  padding-right: 50px;
+  font-family: Outfit, var(--mantine-font-family);
+  font-size: 22px;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    width: 100%;
+  }
+}
