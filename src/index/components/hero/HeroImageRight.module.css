@@ -5,6 +5,7 @@
   background-image:
     linear-gradient(180deg, rgba(130, 201, 30, 0) 0%,  var(--mantine-color-gray-8) 99.9%),
     url(/assets/compressed/family-comp.jpg);
+    /* background-position: center top 20px; */
     padding-top: calc(var(--mantine-spacing-xl) * 3);
     padding-bottom: calc(var(--mantine-spacing-xl) * 3);
     height: calc(100vh);

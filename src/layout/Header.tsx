@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Burger, Button, Container, Drawer, Group, Image, Stack, useMantineTheme } from '@mantine/core';
+import { Burger, Button, Container, Drawer, Group, Image, Stack, useMantineTheme, Text } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import './header.css';
 import {
@@ -18,7 +18,7 @@ export default function Header() {
   const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const isProperties = location === '/propiedades';
-  const buttonColor = isMobile ? 'black' : (scrolled ? 'black' : 'white');
+  const buttonColor = isMobile ? 'var(--mantine-primary-color-9)' : (scrolled ? 'var(--mantine-primary-color-9)' : 'white');
 
 
   useEffect(() => {
@@ -139,11 +139,35 @@ export default function Header() {
       </ul>
       <Container size="xl" py="xs">
         <Group justify="space-between">
-          <Image className='logo' src="/assets/logo.jpeg" />
+          <Group>
+          <Image className='logo' src={'/assets/logo.jpeg'} />
+          <Stack align='center' gap={0}>
+            <Text
+              mb={-14}
+              ta={'center'}
+              fw={600}
+              fz={isMobile ? 'h2' : 'h1'}
+              // c={'var(--mantine-primary-color-9)'}
+              c={buttonColor}
+            >
+            Seguros
+            </Text>
+            <Text
+              ta={'center'}
+              fw={200}
+              fz={isMobile ? 'h3' : 'h2'}
+              // c={'var(--mantine-primary-color-9)'}
+              c={buttonColor}
+              >
+              MILANESI
+            </Text>
+          </Stack>
+        </Group>
+          {/* <Image className='logo' src="/assets/logo.jpeg" /> */}
           <Group visibleFrom="sm">
             {navButtons}
           </Group>
-          <Burger opened={opened} onClick={toggle} hiddenFrom='sm' size='sm' color='white' />
+          <Burger opened={opened} onClick={toggle} hiddenFrom='sm' size='sm' color={buttonColor} />
           <Drawer opened={opened} onClose={toggle} size={'80%'} className='drawer' bg={'var(--mantine-primary-color-4)'}>
             <Stack>{navButtons}</Stack>
           </Drawer>
