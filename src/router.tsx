@@ -10,6 +10,10 @@ export const router = createBrowserRouter([
         path: '',
         lazy: lazyComponent(import('./index/page/Index')),
       },
+      {
+        path: 'seguros/:seguro',
+        lazy: lazyComponent(import('./insurance/page/InsurancePage')),
+      },
       // {
       //   path: 'propiedades',
       //   lazy: lazyComponent(import('./properties/page/PropertiesPage')),
