@@ -1,5 +1,6 @@
 import { Badge, Button, Card, Group, Image, Text } from '@mantine/core';
 import classes from './BadgeCard.module.css';
+import { Link } from 'react-router';
 
 interface CardInsurance {
   id: string;
@@ -47,7 +48,7 @@ export default function InsuranceCard(props: CardInsurance) {
       </Card.Section>
 
       <Group mt="xs">
-        <Button radius="md" style={{ flex: 1 }}>
+        <Button radius="md" style={{ flex: 1 }} component={Link} to={'seguros/'+props.id}>
           Más Información
         </Button>
         {/* <ActionIcon variant="default" radius="md" size={36}>
