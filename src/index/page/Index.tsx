@@ -1,15 +1,17 @@
 import Contact from "../components/contact/Contact";
 import Footer from "../components/footer/Footer";
 import HeroImageRight from "../components/hero/HeroImage";
-import { insuranceTypes } from "../components/insurances/insurancesList";
-import InsurancesSection from "../components/insurances/InsurancesSection";
+// import { insuranceTypes } from "../components/insurances/insurancesList";
+// import InsurancesSection from "../components/insurances/InsurancesSection";
+import NewInsuranceSection from "../components/insurances/NewInsuranceSection";
 import { ServiceSlider } from "../components/slider/Slider";
 
 export default function Index() {
   return (
     <>
             <HeroImageRight />
-            <section id="seguros">
+            <NewInsuranceSection />
+            {/* <section id="seguros">
               {insuranceTypes.map((item, idx) => (
                 <InsurancesSection
                   key={item.id}
@@ -17,7 +19,7 @@ export default function Index() {
                   insurance={item}
                 />
               ))}
-            </section>
+            </section> */}
             <ServiceSlider />
             <Contact />
             <Footer />
