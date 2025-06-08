@@ -5,13 +5,13 @@ interface CardInsurance {
   id: string;
   title: string;
   description: string;
-  benefits: string[];
+  compBenefits: string[];
   image: string;
   to: string;
 }
 
 export default function InsuranceCard(props: CardInsurance) {
-   const features = props.benefits.map((badge) => (
+   const features = props.compBenefits.map((badge) => (
     <Badge variant="light" key={badge}>
       {badge}
     </Badge>

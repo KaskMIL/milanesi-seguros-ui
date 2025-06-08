@@ -1,16 +1,27 @@
-import { Overlay, Title } from '@mantine/core';
+import { Container, Overlay, Title, Text } from '@mantine/core';
 import classes from './HeroImageBackground.module.css';
 
-export default function InsuranceHero() {
+interface InsuranceHeroProps {
+  title: string;
+  description: string;
+  image: string;
+}
+
+export default function InsuranceHero(props: InsuranceHeroProps) {
   return (
-    <div className={classes.wrapper} style={{ backgroundImage: 'url(/assets/compressed/car-driving.jpeg)' }}>
+    <section className={classes.wrapper} style={{ backgroundImage: `url(${props.image})` }}>
       <Overlay color="#000" opacity={0.65} zIndex={1} />
 
       <div className={classes.inner}>
         <Title className={classes.title}>
-          Seguro de Autos
+          Seguros de {props.title}
         </Title>
+         <Container size={640}>
+          <Text size="xl" className={classes.description}>
+            {props.description}
+          </Text>
+        </Container>
       </div>
-    </div>
+    </section>
   );
 }
