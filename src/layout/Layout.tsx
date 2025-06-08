@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import Header from "./Header";
 import { useLocation } from "react-router";
 import { useMediaQuery } from "@mantine/hooks";
+// import WhatsappButton from "../whatsapp/WhatsApp";
 
 interface Layout {
   children: ReactNode
@@ -23,6 +24,7 @@ export default function Layout({ children }: Layout) {
       </AppShell.Header>
       <AppShell.Main>
         {children}
+        {/* <WhatsappButton whatsapp={""} /> */}
       </AppShell.Main>
     </AppShell>
   )

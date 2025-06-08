@@ -8,7 +8,7 @@ import {
   IconMapPin,
   IconPhone,
 } from '@tabler/icons-react';
-import { Link, useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,7 +17,7 @@ export default function Header() {
   const theme = useMantineTheme();
   const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
-  const isProperties = location === '/propiedades';
+  const isProperties = location === '/seguros';
   const buttonColor = isMobile ? 'var(--mantine-primary-color-9)' : (scrolled ? 'var(--mantine-primary-color-9)' : 'white');
 
 
@@ -35,24 +35,24 @@ export default function Header() {
         c={buttonColor}
         size="lg"
         fw={500}
-        component={Link}
-        to={'propiedades'}
+        component={'a'}
+        href={'#seguros'}
         onClick={() => {
           if (isMobile) {
             toggle();
           }
         }}
       >
-        Propiedades
+        Seguros
       </Button>
-      {isProperties ? (
+      {/* {isProperties ? (
         <Button
           variant="transparent"
           c={buttonColor}
           size="lg"
           fw={500}
-          component={Link}
-          to={'/#about'}
+          component={'a'}
+          href={'/#seguros'}
           onClick={() => {
           if (isMobile) {
             toggle();
@@ -77,7 +77,7 @@ export default function Header() {
         >
           Nosotros
         </Button>
-      )}
+      )} */}
       <Button
         variant="transparent"
         c={buttonColor}

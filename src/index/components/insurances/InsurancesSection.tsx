@@ -63,7 +63,6 @@ export default function InsurancesSection({ insurance, imagePosition }: Insuranc
               <Button
                 component={Link}
                 to={insurance.to}
-                // target={'_self'}
               >
                 Conocé Mas!
               </Button>
@@ -72,8 +71,6 @@ export default function InsurancesSection({ insurance, imagePosition }: Insuranc
           <Image
             src={insurance.image}
             fallbackSrc='https://placehold.co/600x400'
-            // h={'356px'}
-            // w='auto'
             fit={'cover'}
             radius="md"
             className={classes.image}
