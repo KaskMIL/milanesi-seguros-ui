@@ -10,7 +10,7 @@ interface InsuranceHeroProps {
 export default function InsuranceHero(props: InsuranceHeroProps) {
   return (
     <section className={classes.wrapper} style={{ backgroundImage: `url(${props.image})` }}>
-      <Overlay color="#000" opacity={0.65} zIndex={1} />
+      <Overlay color="#000" opacity={0.8} zIndex={1} />
 
       <div className={classes.inner}>
         <Title className={classes.title}>

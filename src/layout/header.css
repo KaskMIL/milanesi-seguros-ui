@@ -30,9 +30,9 @@
 }
 
 .logo {
-  width: 80px;
+  width: 290px;
 
   @media (max-width: $mantine-breakpoint-xs) {
-    width: 60px;
+    width: 180px;
   }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Burger, Button, Container, Drawer, Group, Image, Stack, useMantineTheme, Text } from '@mantine/core';
+import { Burger, Button, Container, Drawer, Group, Image, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import './header.css';
 import {
@@ -8,7 +8,7 @@ import {
   IconMapPin,
   IconPhone,
 } from '@tabler/icons-react';
-import { useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +18,7 @@ export default function Header() {
   const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const isProperties = location === '/seguros';
-  const buttonColor = isMobile ? 'var(--mantine-primary-color-9)' : (scrolled ? 'var(--mantine-primary-color-9)' : 'white');
+  const buttonColor = isMobile ? (scrolled ? 'var(--mantine-primary-color-9)' : 'white') : (scrolled ? 'var(--mantine-primary-color-9)' : 'white');
 
 
   useEffect(() => {
@@ -35,8 +35,8 @@ export default function Header() {
         c={buttonColor}
         size="lg"
         fw={500}
-        component={'a'}
-        href={'#seguros'}
+        component={Link}
+        to={'/#seguros'}
         onClick={() => {
           if (isMobile) {
             toggle();
@@ -139,15 +139,15 @@ export default function Header() {
       </ul>
       <Container size="xl" py="xs">
         <Group justify="space-between">
+          <a style={{ textDecoration: 'none' }} href='/'>
           <Group>
-          <Image className='logo' src={'/assets/logo.jpeg'} />
-          <Stack align='center' gap={0}>
+          <Image className='logo' src={scrolled ? '/assets/isologo-color.svg' : '/assets/isologo-color-1.svg'} />
+          {/* <Stack align='center' gap={0}>
             <Text
               mb={-14}
               ta={'center'}
               fw={600}
               fz={isMobile ? 'h2' : 'h1'}
-              // c={'var(--mantine-primary-color-9)'}
               c={buttonColor}
             >
             Seguros
@@ -156,18 +156,18 @@ export default function Header() {
               ta={'center'}
               fw={200}
               fz={isMobile ? 'h3' : 'h2'}
-              // c={'var(--mantine-primary-color-9)'}
               c={buttonColor}
               >
               MILANESI
             </Text>
-          </Stack>
+          </Stack> */}
         </Group>
+        </a>
           {/* <Image className='logo' src="/assets/logo.jpeg" /> */}
           <Group visibleFrom="sm">
             {navButtons}
           </Group>
-          <Burger opened={opened} onClick={toggle} hiddenFrom='sm' size='sm' color={buttonColor} />
+          <Burger opened={opened} onClick={toggle} hiddenFrom='sm' size='md' color={buttonColor} />
           <Drawer opened={opened} onClose={toggle} size={'80%'} className='drawer' bg={'var(--mantine-primary-color-4)'}>
             <Stack>{navButtons}</Stack>
           </Drawer>
