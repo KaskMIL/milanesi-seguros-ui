@@ -3,6 +3,8 @@ import InsuranceHero from "../components/InsuranceHero";
 import { coverages } from "../../index/components/insurances/insurancesList";
 import InsuranceBenefits from "../components/InsuranceBenefits";
 import { IconX } from "@tabler/icons-react";
+import Contact from "../components/Contact";
+import Footer from "../../index/components/footer/Footer";
 
 export default function InsurancePage() {
   const { seguro } = useParams();
@@ -26,6 +28,8 @@ export default function InsurancePage() {
     <>
       <InsuranceHero title={insurance.title} description={insurance.description} image={insurance.bgImage}  />
       <InsuranceBenefits benefits={insurance.benefits} />
+      <Contact insuranceType={insurance.id} />
+      <Footer />
     </>
   )
 }
