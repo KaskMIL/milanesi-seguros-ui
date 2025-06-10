@@ -1,5 +1,6 @@
 import { Button, Container, Text, Title } from '@mantine/core';
 import classes from './HeroImageRight.module.css';
+import { data } from '../../../utils/data';
 
 export default function HeroImageRight() {
   return (
@@ -23,6 +24,8 @@ export default function HeroImageRight() {
               size="xl"
               className={classes.control}
               mt={40}
+              component='a'
+              href={'https://wa.me/'+data.whatsapp}
             >
               Asegurate hoy
             </Button>

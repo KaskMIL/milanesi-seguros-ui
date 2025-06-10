@@ -11,15 +11,6 @@ export default function Index() {
     <>
             <HeroImageRight />
             <NewInsuranceSection />
-            {/* <section id="seguros">
-              {insuranceTypes.map((item, idx) => (
-                <InsurancesSection
-                  key={item.id}
-                  imagePosition={idx % 2 === 0 ? "right" : "left"}
-                  insurance={item}
-                />
-              ))}
-            </section> */}
             <ServiceSlider />
             <Contact />
             <Footer />

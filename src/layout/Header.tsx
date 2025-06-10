@@ -22,6 +22,7 @@ import {
   IconPhone,
 } from '@tabler/icons-react';
 import { Link } from 'react-router';
+import { data } from '../utils/data';
 
 const navLinks = [
   {
@@ -44,7 +45,7 @@ const navLinks = [
   },
   {
     label: 'Contacto',
-    to: 'https://wa.me/1123456789',
+    to: 'https://wa.me/'+data.whatsapp,
     external: true,
   },
 ];
@@ -155,7 +156,7 @@ export default function Header() {
                 fw={500}
                 leftSection={<IconBrandWhatsapp />}
                 component="a"
-                href="https://wa.me/1123456789"
+                href={'https://wa.me/'+data.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => isMobile && toggle()}
@@ -187,7 +188,7 @@ export default function Header() {
                 fw={500}
                 leftSection={<IconBrandWhatsapp />}
                 component="a"
-                href="https://wa.me/1123456789"
+                href={'https://wa.me/'+data.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => toggle()}
