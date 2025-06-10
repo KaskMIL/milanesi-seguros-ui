@@ -12,7 +12,7 @@
   padding-bottom: var(--mantine-spacing-xs);
 
   @media (max-width: $mantine-breakpoint-xs) {
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 }
 

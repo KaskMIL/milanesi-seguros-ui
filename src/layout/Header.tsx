@@ -1,5 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Burger, Button, Container, Drawer, Group, Image, Stack, useMantineTheme } from '@mantine/core';
+import {
+  Burger,
+  Button,
+  Container,
+  Drawer,
+  Group,
+  Image,
+  Stack,
+  useMantineTheme,
+  Menu,
+  MenuDropdown,
+  MenuTarget,
+  MenuItem,
+} from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import './header.css';
 import {
@@ -8,18 +21,47 @@ import {
   IconMapPin,
   IconPhone,
 } from '@tabler/icons-react';
-import { Link, useLocation } from 'react-router';
+import { Link } from 'react-router';
+
+const navLinks = [
+  {
+    label: 'Inicio',
+    to: '/',
+  },
+  {
+    label: 'Seguros',
+    to: '/#seguros',
+    nested: [
+      { label: 'Auto', to: '/seguros/auto' },
+      { label: 'Moto', to: '/seguros/moto' },
+      { label: 'Hogar', to: '/seguros/hogar' },
+      { label: 'Consorcio', to: '/seguros/consorcio' },
+      { label: 'Comercio', to: '/seguros/comercio' },
+      { label: 'Mascota', to: '/seguros/mascota' },
+      { label: 'Bicicleta', to: '/seguros/bicicleta' },
+      { label: 'ART', to: '/seguros/art' },
+    ],
+  },
+  {
+    label: 'Contacto',
+    to: 'https://wa.me/1123456789',
+    external: true,
+  },
+];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [opened, { toggle }] = useDisclosure(false);
-  const location = useLocation().pathname;
+  // const location = useLocation().pathname;
   const theme = useMantineTheme();
   const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
-  const isProperties = location === '/seguros';
-  const buttonColor = isMobile ? (scrolled ? 'var(--mantine-primary-color-9)' : 'white') : (scrolled ? 'var(--mantine-primary-color-9)' : 'white');
-
+  const buttonColor = isMobile
+    ? 
+       'var(--mantine-primary-color-9)'
+    : scrolled
+      ? 'var(--mantine-primary-color-9)'
+      : 'white';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 400);
@@ -27,106 +69,58 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-
-  const navButtons = (
-    <>
+  const navButtons = navLinks.map((link) =>
+    link.nested ? (
+      <Menu
+        classNames={{ dropdown: 'submenu', item: 'item', itemLabel: 'label' }}
+        key={link.label}
+        trigger="hover"
+        openDelay={100}
+        closeDelay={100}
+      >
+        <MenuTarget>
+          <Button variant="transparent" c={buttonColor} size="lg" fw={500}>
+            {link.label}
+          </Button>
+        </MenuTarget>
+        <MenuDropdown>
+          {link.nested.map((nested) => (
+            <MenuItem
+              key={nested.label}
+              component={Link}
+              to={nested.to}
+              onClick={() => isMobile && toggle()}
+              style={{ fontSize: '16px' }}
+            >
+              {nested.label}
+            </MenuItem>
+          ))}
+        </MenuDropdown>
+      </Menu>
+    ) : (
       <Button
+        key={link.label}
         variant="transparent"
         c={buttonColor}
         size="lg"
         fw={500}
-        component={Link}
-        to={'/#seguros'}
-        onClick={() => {
-          if (isMobile) {
-            toggle();
-          }
-        }}
+        component={link.external ? 'a' : Link}
+        to={link.external ? undefined : link.to}
+        href={link.external ? link.to : undefined}
+        target={link.external ? '_blank' : undefined}
+        rel={link.external ? 'noopener noreferrer' : undefined}
+        onClick={() => isMobile && toggle()}
       >
-        Seguros
+        {link.label}
       </Button>
-      {/* {isProperties ? (
-        <Button
-          variant="transparent"
-          c={buttonColor}
-          size="lg"
-          fw={500}
-          component={'a'}
-          href={'/#seguros'}
-          onClick={() => {
-          if (isMobile) {
-            toggle();
-          }
-        }}
-        >
-          Nosotros
-        </Button>
-      ) : (
-        <Button
-          variant="transparent"
-          c={buttonColor}
-          size="lg"
-          fw={500}
-          component={'a'}
-          href="#about"
-          onClick={() => {
-          if (isMobile) {
-            toggle();
-          }
-        }}
-        >
-          Nosotros
-        </Button>
-      )} */}
-      <Button
-        variant="transparent"
-        c={buttonColor}
-        size="lg"
-        fw={500}
-        component="a"
-        href={`https://wa.me/1123456789`}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => {
-          if (isMobile) {
-            toggle();
-          }
-        }}
-      >
-        Contacto
-      </Button>
-      <Button
-        variant="filled"
-        color="green"
-        size="lg"
-        fw={500}
-        leftSection={<IconBrandWhatsapp />}
-        component="a"
-        href={`https://wa.me/1123456789`}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => {
-          if (isMobile) {
-            toggle();
-          }
-        }}
-      >
-        WhastApp
-      </Button>
-    </>
+    ),
   );
 
   return (
     <div
-      className={
-        isProperties
-          ? 'headerProperties'
-          : `header ${scrolled ? 'scrolled' : ''}`
-      }
+      className={`header ${scrolled ? 'scrolled' : ''}`}
     >
-      <ul
-        className={'infoHeader'}
-      >
+      <ul className={'infoHeader'}>
         <li style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
           <IconMapPin size={'16px'} /> Calle Falsa 1234, Bella Vista
         </li>
@@ -139,41 +133,72 @@ export default function Header() {
       </ul>
       <Container size="xl" py="xs">
         <Group justify="space-between">
-          <a style={{ textDecoration: 'none' }} href='/'>
-          <Group>
-          <Image className='logo' src={scrolled ? '/assets/isologo-color.svg' : '/assets/isologo-color-1.svg'} />
-          {/* <Stack align='center' gap={0}>
-            <Text
-              mb={-14}
-              ta={'center'}
-              fw={600}
-              fz={isMobile ? 'h2' : 'h1'}
-              c={buttonColor}
-            >
-            Seguros
-            </Text>
-            <Text
-              ta={'center'}
-              fw={200}
-              fz={isMobile ? 'h3' : 'h2'}
-              c={buttonColor}
+          <a style={{ textDecoration: 'none' }} href="/">
+            <Group>
+              <Image
+                className="logo"
+                src={
+                  scrolled
+                    ? '/assets/isologo-color.svg'
+                    : '/assets/isologo-blanco.svg'
+                }
+              />
+            </Group>
+          </a>
+          <nav>
+            <Group visibleFrom="sm" gap="sm">
+              {navButtons}
+              <Button
+                variant="filled"
+                color="green"
+                size="lg"
+                fw={500}
+                leftSection={<IconBrandWhatsapp />}
+                component="a"
+                href="https://wa.me/1123456789"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => isMobile && toggle()}
               >
-              MILANESI
-            </Text>
-          </Stack> */}
-        </Group>
-        </a>
-          {/* <Image className='logo' src="/assets/logo.jpeg" /> */}
-          <Group visibleFrom="sm">
-            {navButtons}
-          </Group>
-          <Burger opened={opened} onClick={toggle} hiddenFrom='sm' size='md' color={buttonColor} />
-          <Drawer opened={opened} onClose={toggle} size={'80%'} className='drawer' bg={'var(--mantine-primary-color-4)'}>
-            <Stack>{navButtons}</Stack>
+                WhatsApp
+              </Button>
+            </Group>
+          </nav>
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            hiddenFrom="sm"
+            size="md"
+            color={scrolled ? 'var(--mantine-primary-color-9' : 'white'}
+          />
+          <Drawer
+            opened={opened}
+            onClose={toggle}
+            size={'80%'}
+            className="drawer"
+            bg={'var(--mantine-primary-color-4)'}
+          >
+            <Stack>
+              {navButtons}
+              <Button
+                variant="filled"
+                color="green"
+                size="lg"
+                fw={500}
+                leftSection={<IconBrandWhatsapp />}
+                component="a"
+                href="https://wa.me/1123456789"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => toggle()}
+                fullWidth
+              >
+                WhatsApp
+              </Button>
+            </Stack>
           </Drawer>
         </Group>
       </Container>
     </div>
   );
 }
-
