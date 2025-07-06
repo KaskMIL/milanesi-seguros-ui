@@ -92,9 +92,9 @@ export default function Contact() {
       <Container size="lg">
         <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={50}>
           <div>
-            <Title className={classes.title}>Contactanos!</Title>
+            <Title className={classes.title}>¡Contactános!</Title>
             <Text className={classes.description} mt="sm" mb={30}>
-              Dejanos un mensaje y te contactaremos en las proximas horas
+              Dejanos un mensaje y te contactaremos en las próximas horas
             </Text>
 
             <ContactIconsList />

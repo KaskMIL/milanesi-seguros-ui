@@ -73,7 +73,7 @@ export default function Contact(props: ContactProps) {
     >
       <Container component={'section'} size={'lg'}>
         <Title mb={'xs'} c={'white'}>
-          Cotizá ahora!
+          ¡Cotizá ahora!
         </Title>
         <Text mb={'lg'} c={'white'}>
           Dejanos un mensaje y nos pondremos en contacto lo antes posible
