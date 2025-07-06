@@ -18,7 +18,7 @@ import './header.css';
 import {
   IconBrandWhatsapp,
   IconDeviceWatch,
-  IconMapPin,
+  // IconMapPin,
   IconPhone,
 } from '@tabler/icons-react';
 import { Link } from 'react-router';
@@ -122,14 +122,14 @@ export default function Header() {
       className={`header ${scrolled ? 'scrolled' : ''}`}
     >
       <ul className={'infoHeader'}>
+        {/* <li style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <IconMapPin size={'16px'} /> {data.address}
+        </li> */}
         <li style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <IconMapPin size={'16px'} /> Calle Falsa 1234, Bella Vista
+          <IconPhone size={'16px'} /> {data.phoneNumber}
         </li>
         <li style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <IconPhone size={'16px'} /> 11-1234-5678
-        </li>
-        <li style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <IconDeviceWatch size={'16px'} /> Lu - Vie 8:00am a 18:00pm
+          <IconDeviceWatch size={'16px'} /> {data.attentionTime}
         </li>
       </ul>
       <Container size="xl" py="xs">

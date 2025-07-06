@@ -104,7 +104,7 @@ export default function Contact() {
 
           <form
             className={classes.form}
-            onSubmit={form.onSubmit((values) => postContact.mutate(values))}
+            onSubmit={form.onSubmit((values) => postContact.mutate(values, { onSuccess: () => form.reset() }))}
           >
             <TextInput
               label="Nombre"
