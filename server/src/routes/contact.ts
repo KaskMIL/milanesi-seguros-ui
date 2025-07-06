@@ -1,14 +1,14 @@
-import express from 'express';
+import { Request, Response, Router } from 'express';
 import { sendContactMail } from '../mailer/mailer-services';
-import { prisma } from '../../prisma/client';
+import { prisma } from '../prisma/client';
 
-const router = express.Router();
+const contactRouter = Router();
 
-router.post('/contact', async (req, res) => {
+contactRouter.post('/', async (req: Request, res: Response) => {
   const { name, email, message, category } = req.body;
 
   if (!name || !email || !message || !category) {
-    return res.status(400).json({ error: 'Todos los campos son obligatorios' });
+    res.status(400).json({ error: 'Todos los campos son obligatorios' });
   };
 
   try {
@@ -20,11 +20,11 @@ router.post('/contact', async (req, res) => {
 
     await sendContactMail({ name, email, message, category });
 
-    return res.status(201);
+    res.status(201).json( { status: 'success' });
   } catch (e) {
     console.error(e);
-    return res.status(500).json({ error: e, message: 'Error en el servidor' });
+    res.status(500).json({ error: e, message: 'Error en el servidor' });
   };
 });
 
-export default router;
+export default contactRouter;
