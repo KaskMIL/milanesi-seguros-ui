@@ -9,9 +9,10 @@ export interface ContactMail {
   email: string;
   message: string;
   category: string;
+  phoneNumber: string
 }
 
-export async function sendContactMail({ name, email, message, category }: ContactMail) {
+export async function sendContactMail({ name, email, message, category, phoneNumber }: ContactMail) {
   // return sgMail.send({
   //   to: email,
   //   from: process.env.SENDGRID_EMAIL!,
@@ -22,5 +23,5 @@ export async function sendContactMail({ name, email, message, category }: Contac
   //     <p><strong>Mensaje:</strong> ${message}</p>
   //   `
   // });
-  console.log(name, email, message, category)
+  console.log(name, email, message, category, phoneNumber)
 };
