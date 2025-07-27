@@ -89,8 +89,8 @@ export default function Contact() {
 
   return (
     <Box className={classes.wrapper} id="contacto">
-      <Container size="lg">
-        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={50}>
+      <Container size="xl">
+        <SimpleGrid cols={{ base: 1, sm: 2 }}>
           <div>
             <Title className={classes.title}>¡Contactános!</Title>
             <Text className={classes.description} mt="sm" mb={30}>
@@ -123,6 +123,7 @@ export default function Contact() {
             />
             <NumberInput
               label="Telefono"
+              placeholder="11-1234-5678"
               hideControls
               withAsterisk
               classNames={{ input: classes.input, label: classes.inputLabel }}
@@ -130,6 +131,7 @@ export default function Contact() {
             />
             <Select
               label="Tipo de seguro"
+              styles={{ input: { backgroundColor: 'white', borderColor: 'var(--mantine-color-gray-4)' } }}
               withAsterisk
               data={[
                 { label: 'Auto', value: 'auto' },
@@ -165,9 +167,11 @@ export default function Contact() {
             )}
             <Group justify="flex-end" mt="md">
               <Button
-                className={classes.control}
-                radius={0}
-                size="md"
+                // className={classes.control}
+                color='var(--mantine-primary-color-9)'
+                // radius={0}
+                // size="lg"
+                fullWidth
                 type="submit"
                 loading={postContact.isPending}
               >
