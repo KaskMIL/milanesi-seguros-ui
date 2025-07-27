@@ -28,6 +28,7 @@ const navLinks = [
   {
     label: 'Inicio',
     to: '/',
+    external: false,
   },
   {
     label: 'Seguros',
@@ -42,6 +43,7 @@ const navLinks = [
       { label: 'Bicicleta', to: '/seguros/bicicleta' },
       { label: 'ART', to: '/seguros/art' },
     ],
+    external: false,
   },
   {
     label: 'Contacto',
