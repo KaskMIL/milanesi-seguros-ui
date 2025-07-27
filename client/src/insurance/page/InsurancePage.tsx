@@ -6,9 +6,13 @@ import { IconX } from '@tabler/icons-react';
 import Contact from '../components/Contact';
 import Footer from '../../index/components/footer/Footer';
 import { useEffect } from 'react';
+import { data } from '../../utils/data';
+import { useBreakpoint } from '../../utils/utils';
+import WhatsappButton from '../../whatsapp/WhatsApp';
 
 export default function InsurancePage() {
   const { seguro } = useParams();
+  const breakpoints = useBreakpoint();
   
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' }); // o 'auto' si no querés animación
@@ -26,6 +30,9 @@ export default function InsurancePage() {
   };
   return (
     <>
+    {breakpoints.isMobile && (
+      <WhatsappButton whatsapp={data.whatsapp.toString()} />
+    )}
       <InsuranceHero
         title={insurance.title}
         description={insurance.description}

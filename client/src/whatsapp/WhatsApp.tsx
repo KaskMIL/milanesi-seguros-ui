@@ -15,7 +15,7 @@ const WhatsappButton = (props: WhatsappButtonProps) => {
         rel="noopener noreferrer"
         className="whatsapp-button"
       >
-        <img src={'/assets/logo-whatsapp.png'} style={{ width: '80px', height: 'auto'}} alt="whatsapp" />
+        <img src={'/assets/logo-whatsapp.png'} style={{ width: '70px', height: 'auto'}} alt="whatsapp" />
       </a>
     </div>
   );
