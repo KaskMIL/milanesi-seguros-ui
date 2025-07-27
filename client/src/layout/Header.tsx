@@ -55,13 +55,12 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [opened, { toggle }] = useDisclosure(false);
-  // const location = useLocation().pathname;
   const theme = useMantineTheme();
   const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const buttonColor = isMobile
     ? 
-       'var(--mantine-primary-color-9)'
+       'var(--mantine-primary-color-1)'
     : scrolled
       ? 'var(--mantine-primary-color-9)'
       : 'white';
@@ -93,7 +92,7 @@ export default function Header() {
               component={Link}
               to={nested.to}
               onClick={() => isMobile && toggle()}
-              style={{ fontSize: '16px' }}
+              style={{ fontSize: '16px', color: isMobile ? 'var(--mantine-color-gray-7)' : 'var(--mantine-color-gray-7)' }}
             >
               {nested.label}
             </MenuItem>
