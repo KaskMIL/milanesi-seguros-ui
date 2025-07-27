@@ -2,11 +2,15 @@ import { Box, Image } from "@mantine/core";
 import "./HomeDescription.css"
 
 const services = [
+  'assets/seguros/atm-2.png',
+  'assets/seguros/galeno-logo.png',
+  'assets/seguros/galicia-marce.jpeg',
+  'assets/seguros/hdi-seguros-seeklogo.png',
+  'assets/seguros/Mercantil-Andina-logo.jpg',
   'assets/seguros/fedpat-logo-alta.png',
-  'assets/seguros/logo-la-caja.svg',
   'assets/seguros/logo-rivadavia.png',
   'assets/seguros/logo-sancor.svg',
-  'assets/seguros/provincia-logo.png',
+  // 'assets/seguros/provincia-logo.png',
 ];
 
 export function ServiceSlider() {
@@ -15,7 +19,7 @@ export function ServiceSlider() {
 
   return (
     <Box
-      bg={'var(--mantine-primary-color-9)'}
+      bg={'white'}
       style={{
         overflow: "hidden",
         whiteSpace: "nowrap",
@@ -28,6 +32,7 @@ export function ServiceSlider() {
           animation: "scroll 30s linear infinite",
         }}
       >
+        
         {items.map((service, idx) => (
           <Box
             key={idx}
@@ -38,7 +43,7 @@ export function ServiceSlider() {
               display: "inline-flex",
             }}
           >
-            <Image src={service} h={128} w={256} fit='contain' />
+            <Image src={service} h={128} w={256} fit='contain' bg={idx === 6 ? '#121D46' : 'transparent'} px={idx === 6 ? 'sm' : 0} />
           </Box>
         ))}
       </Box>

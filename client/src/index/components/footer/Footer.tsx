@@ -14,7 +14,7 @@ export default function Footer() {
     <div className={classes.footer}>
       <Container className={classes.inner} size={'xl'}>
         <Group>
-          <Image w={180} src={'/assets/isologo-color.svg'} />
+          <Image w={180} src={'/assets/isologo-blanco.svg'} />
         </Group>
         <Group
           gap={0}
