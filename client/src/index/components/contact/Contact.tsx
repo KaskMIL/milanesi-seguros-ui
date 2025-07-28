@@ -117,6 +117,7 @@ export default function Contact() {
             <TextInput
               label="Email"
               withAsterisk
+              mt="xs"
               placeholder="juanPerez@email.com"
               classNames={{ input: classes.input, label: classes.inputLabel }}
               {...form.getInputProps('email')}
@@ -126,13 +127,15 @@ export default function Contact() {
               placeholder="11-1234-5678"
               hideControls
               withAsterisk
+              mt="xs"
               classNames={{ input: classes.input, label: classes.inputLabel }}
               {...form.getInputProps('phoneNumber')}
             />
             <Select
               label="Tipo de seguro"
-              styles={{ input: { backgroundColor: 'white', borderColor: 'var(--mantine-color-gray-4)' } }}
+              styles={{ input: { backgroundColor: 'white', borderColor: 'var(--mantine-color-gray-4)', color: 'black' }, label: { color: 'black' } }}
               withAsterisk
+              mt="xs"
               data={[
                 { label: 'Auto', value: 'auto' },
                 { label: 'Moto', value: 'moto' },
