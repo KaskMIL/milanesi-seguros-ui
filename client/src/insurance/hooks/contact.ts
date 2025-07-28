@@ -9,7 +9,7 @@ export interface ContactBody {
 
 }
 const postContact = async (body: ContactBody): Promise<void> => {
-  const request = new Request('/api/contact', {
+  const request = new Request('/api/contacts', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
